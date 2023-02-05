@@ -7,10 +7,41 @@
     <title>Chat</title>
   </head>
   <body>
-    <h1>hola</h1>
+    <h1>chat online</h1>
+    
+    <ul></ul>
+    <form action="">
+      <input type="text" id="nombre">Nombre <br>
+      <input type="text" id="mensaje">
+      <button>enviar</button>
+    </form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
+      let form=document.querySelector("form")
+      let input=document.getElementById("mensaje")
+      let nombre=document.getElementById("nombre")
+      let ul=document.querySelector("ul")
+      //recibe el mensaje
+      socket.on("mensaje",(user)=>{
+        console.log(user);
+      ul.innerHTML+=` <h3>${user.nombre}: ${user.msg}<h3/>` 
+     })
+
+      //envia el mensaje
+      form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        socket.emit("chat", {id:socket.id, nombre:nombre.value,msg:input.value})
+      
+        input.value=""
+      })
+    
+     
+     //escucha al usuario
+     
+     socket.on("usuarios-conectados",(connectedUsers)=>{
+      console.log(connectedUsers);
+     })
     </script>
   </body>
 </html>
