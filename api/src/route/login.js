@@ -1,7 +1,8 @@
 import express, { Router }  from 'express'
 const router = express.Router();
-import {home} from "../controller/home.js"
-router.get("/home",home )
+import {login} from "../controller/login.js"
+
+router.post("/",login )
 
 
 
