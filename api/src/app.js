@@ -11,7 +11,7 @@ const server = http.createServer(app);
 import cors from "cors";
 const io = new SocketIO(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-react-sand.vercel.app/",
     methods: ["GET", "POST"]
   }
 })
