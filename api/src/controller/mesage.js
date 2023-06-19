@@ -3,11 +3,12 @@ import visitSchema from "../models/vist.js"
 import * as dotenv from 'dotenv';
 dotenv.config();
 const mensage=async(req,res)=>{
-    let {body}=req
-    let {visit}=body
+    let {name,message}=req.body
+    let {visit}=req.body
     try {
-        let saveDatos= await postSchema.findByIdAndUpdate({_id:process.env.POST},{$push: {post: body}}, { new: true })
-
+        if(name && message){
+        let saveDatos= await postSchema.findByIdAndUpdate({_id:process.env.POST},{$push: {post:{name,message}}}, { new: true })
+        }
         if(visit){
         let encontrado= await visitSchema.findOne({_id:process.env.VISIT})
         let update= await visitSchema.findByIdAndUpdate({_id:process.env.VISIT},{visit:encontrado.visit + visit})
