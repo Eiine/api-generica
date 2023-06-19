@@ -3,8 +3,9 @@ import { Schema, model } from "mongoose";
 const postSchema = new Schema(
   {
     post: [{
+      page:String,
       name: String,
-      mesagge:String,
+      message:String,
     }],
 },
   { timestamps: true, versionKey: false }

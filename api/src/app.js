@@ -21,6 +21,12 @@ app.use(
   // Rutas de la API
   app.use(routerApi);
 
+  //captura de errores
+
+  app.use((err, req, res, next) => {
+    console.error(err.message); 
+    res.status(500).send({ message: "Ocurrió un error en el servidor" });
+  });
   // Puerto en escucha
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
