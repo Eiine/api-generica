@@ -7,7 +7,7 @@ const port = 3000;
 import db from "./db/config.js"
 // Configuración del server
 app.use(express.json());
-dotenv.config();
+
 
 
 // Configuración de CORS
