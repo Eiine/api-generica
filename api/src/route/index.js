@@ -1,11 +1,9 @@
-import express  from 'express'
-const app = express()
-import routeHome from"../route/home.js"
+import { Router } from "express";
+import videoControler from "./userVideo.js"
 
-function routerApi(app){
-app.use("/api",routeHome)
+let router= Router()
 
-}
+router.use("/inputvideo",videoControler)
 
 
 
@@ -16,4 +14,5 @@ app.use("/api",routeHome)
 
 
 
-export default routerApi;
+
+export default router;
