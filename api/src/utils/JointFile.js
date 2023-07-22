@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import {root,upload} from "../utils/alias.js"
 
-const combineFileParts = (archivoCombinado) => {
-  const archivoSalida = path.join(upload,"juancho", "precentacion.mp4");
-  const carpetaBorrar=path.join(upload,"juancho","temp");
+const combineFileParts =async (archivoCombinado,carpeta) => {
+  const archivoSalida = path.join(upload,`${carpeta}`, "precentacion.mp4");
+  const carpetaBorrar=path.join(upload,`${carpeta}`,"temp");
   // Ordenar los archivos antes de combinarlos
   archivoCombinado.sort((a, b) => {
     // Extraer los números de secuencia del nombre de los archivos
@@ -14,12 +14,12 @@ const combineFileParts = (archivoCombinado) => {
     return numeroSecuenciaA - numeroSecuenciaB;
   });
 
-  archivoCombinado.forEach((archivo) => {
-    const archivoPath = path.join(upload, "juancho","temp", archivo); 
+  let result=archivoCombinado.map((archivo) => {
+    const archivoPath = path.join(carpetaBorrar, archivo); 
+   
     const contenido = fs.readFileSync(archivoPath);
     fs.appendFileSync(archivoSalida, contenido);
   });
-
   console.log("Finalizada la combinación de archivos");
   
   fs.rm(carpetaBorrar, { recursive: true }, (err) => {
@@ -35,6 +35,5 @@ const obtenerArchivos = (folderPath) => {
   const archivos = fs.readdirSync(folderPath);
   return archivos
   };
-
   
 export {combineFileParts, obtenerArchivos}

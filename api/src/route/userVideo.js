@@ -1,9 +1,9 @@
 import { Router } from "express";
-import {videoInput} from "../controller/videoControler.js"
+import {videoInput, sendVideo} from "../controller/videoControler.js"
 
 let router=Router()
 
-router.post("/", videoInput)
-
+router.post("/:_id", videoInput)
+router.get("/:_id",sendVideo)
 
 export default router;
