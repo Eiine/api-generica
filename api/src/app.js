@@ -6,7 +6,7 @@ import multer from 'multer';
 const app = express();
 const port = 3000;
 import db from "./db/config.js"
-import {createJsonApi,saveQueryBack} from "send-http-axios-doc"
+//import {createJsonApi,saveQueryBack} from "send-http-axios-doc"
 
 // Configuración del server
 app.use(express.json());
@@ -39,7 +39,7 @@ app.use(
   
   // Rutas de la API
   app.use(routerApi);
-  app.use("/saveQuery",saveQueryBack)
+  //app.use("/saveQuery",saveQueryBack)
   //prueas
  createJsonApi(app,port)
 
