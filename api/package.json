@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./src/app.js",
-    "ejecutar": "send-http-axios-doc"
+    "start": "nodemon ./src/app.js"
   },
   "keywords": [],
   "author": "",
