@@ -41,7 +41,7 @@ app.use(
   app.use(routerApi);
   //app.use("/saveQuery",saveQueryBack)
   //prueas
- createJsonApi(app,port)
+ //createJsonApi(app,port)
 
 
 
